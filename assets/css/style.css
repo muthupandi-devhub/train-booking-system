@@ -1,0 +1,136 @@
+
+    /* ----- style.css ----- */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background-color: #ffffff;
+      color: #1e293b;
+      transition: background-color 0.2s, color 0.2s;
+      line-height: 1.5;
+    }
+
+    /* dark mode */
+    body.dark {
+      background-color: #0f172a;
+      color: #e2e8f0;
+    }
+
+    /* orange accent */
+    :root {
+      --orange-500: #f97316;
+      --orange-600: #ea580c;
+      --orange-700: #c2410c;
+      --orange-100: #ffedd5;
+      --orange-50: #fff7ed;
+    }
+
+    
+
+    /* utility classes */
+    .shadow-soft {
+      box-shadow: 0 8px 20px -6px rgba(249, 115, 22, 0.12), 0 4px 12px -2px rgba(0, 0, 0, 0.05);
+    }
+    .hover-lift {
+      transition: transform 0.2s ease, box-shadow 0.2s;
+    }
+    .hover-lift:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 28px -8px rgba(249, 115, 22, 0.25);
+    }
+    .input-focus-ring:focus {
+      outline: none;
+      border-color: #f97316;
+      box-shadow: 0 0 0 4px rgba(249, 115, 22, 0.15);
+    }
+
+    .bg-orange-rail { background-color: var(--orange-500); }
+    .text-orange-rail { color: var(--orange-500); }
+    .border-orange-rail { border-color: var(--orange-500); }
+    .hover-bg-orange-rail:hover { background-color: var(--orange-600); }
+
+    /* slider */
+    .slider {
+      position: relative;
+      width: 100%;
+      height: 420px;
+      overflow: hidden;
+    }
+    .slides {
+      display: flex;
+      width: 400%;
+      height: 100%;
+      animation: slideAnimation 16s infinite ease-in-out;
+    }
+    .slide {
+      width: 25%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      flex-shrink: 0;
+    }
+    @keyframes slideAnimation {
+      0%, 20% { transform: translateX(0); }
+      25%, 45% { transform: translateX(-25%); }
+      50%, 70% { transform: translateX(-50%); }
+      75%, 95% { transform: translateX(-75%); }
+      100% { transform: translateX(0); }
+    }
+    .dark .slider::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.2);
+      pointer-events: none;
+      z-index: 1;
+    }
+    .slider-content { z-index: 10; }
+
+    .btn-orange {
+      background-color: var(--orange-500);
+      color: white;
+      font-weight: 600;
+      padding: 0.6rem 1.8rem;
+      border-radius: 9999px;
+      transition: all 0.2s;
+      border: none;
+      cursor: pointer;
+    }
+    .btn-orange:hover {
+      background-color: var(--orange-600);
+      transform: scale(1.02);
+      box-shadow: 0 10px 15px -3px rgba(249,115,22,0.3);
+    }
+
+    .metro-line {
+      border-left: 4px solid var(--orange-500);
+    }
+
+    .nav-link {
+      border-bottom: 2px solid transparent;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .nav-link:hover {
+      border-color: var(--orange-500);
+      color: var(--orange-500);
+    }
+    .dark .nav-link:hover {
+      color: var(--orange-400);
+    }
+
+    /* testimonials */
+    .testimonial-card {
+      background: white;
+      border-radius: 1.5rem;
+      padding: 1.5rem;
+      box-shadow: 0 8px 20px -6px rgba(249,115,22,0.1);
+      border: 1px solid var(--orange-100);
+    }
+    .dark .testimonial-card {
+      background: #1e293b;
+      border-color: #7b4a1e;
+    }

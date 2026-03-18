@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BookTrain · Tamil Nadu's own train & metro</title>
+  <!-- Tailwind for layout helpers only -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Font Awesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <!-- ========== CSS  ========== -->
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+  <!-- ========== HTML (index.html) ========== -->
+  <!-- NAVBAR (white + orange) -->
+  <nav class="bg-white/95 backdrop-blur-sm border-b border-orange-200 sticky top-0 z-30 shadow-sm dark:bg-slate-800/90 dark:border-orange-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex justify-between items-center">
+      <!-- logo BookTrain (orange) -->
+      <a href="index.html" class="flex items-center gap-2 group" id="logo-link">
+        <span class="text-3xl transform group-hover:scale-110 transition duration-300">🚆</span>
+        <span class="text-4xl font-bold text-slate-800 dark:text-white tracking-tight ">Book<span class="text-orange-600 dark:text-orange-400">Train</span></span>
+      </a>
+
+      <!-- main nav -->
+      <ul class="hidden md:flex gap-6 text-slate-600 dark:text-slate-300 font-medium">
+        <li><a href="index.html" class="nav-link pb-1 px-0.5">Home</a></li>
+        <li><a href="results.html" class="nav-link pb-1 px-0.5">Search</a></li>
+        <li><a href="booking.html" class="nav-link pb-1 px-0.5">Booking</a></li>
+        <li><a href="ticket.html" class="nav-link pb-1 px-0.5">e-Ticket</a></li>
+        <li><a href="pnr.html" class="nav-link pb-1 px-0.5">PNR</a></li>
+        <li><a href="history.html" class="nav-link pb-1 px-0.5">History</a></li>
+      </ul>
+
+      <!-- dark toggle -->
+      <button id="darkToggle" class="text-orange-600 bg-orange-50 p-2 rounded-full hover:bg-orange-100 text-sm dark:bg-orange-900 dark:text-orange-200"><i class="fas fa-moon"></i></button>
+    </div>
+    <!-- mobile menu -->
+    <div class="md:hidden flex justify-center gap-4 text-sm pb-2 text-slate-600 dark:text-slate-300">
+      <a href="index.html" class="hover:text-orange-600">Home</a><a href="results.html" class="hover:text-orange-600">Search</a><a href="pnr.html" class="hover:text-orange-600">PNR</a><a href="booking.html" class="hover:text-orange-600">Book</a><a href="ticket.html" class="hover:text-orange-600">Ticket</a><a href="history.html" class="hover:text-orange-600">History</a>
+    </div>
+  </nav>
+   
+  <!-- ========== HOME PAGE (TN focus, with all new sections) ========== -->
+  <div id="homePage" class="page" style="display: block;">
+    <!-- HERO slider (TN imagery) -->
+    <section class="relative overflow-hidden">
+      <div class="slider relative w-full h-[420px] md:h-[480px]">
+        <!-- Slides container -->
+        <div class="slides flex" id="slides">
+          <img src="assets/img/banner-1.png" alt="Chennai Metro" class="slide" >
+          <img src="assets/img/banner-2.png" alt="Madurai Express" class="slide" >
+          <img src="assets/img/banner-3.png" alt="Coimbatore Intercity" class="slide" >
+          <img src="assets/img/banner-4.png" alt="Nilgiri Mountain" class="slide" >
+        </div>
+
+        
+
+        <!-- slider controls -->
+        <button class="absolute left-4 top-1/2 -translate-y-1/2 bg-white/70 hover:bg-orange-500 hover:text-white text-orange-600 w-10 h-10 rounded-full z-30 transition" id="slidePrev">❮</button>
+        <button class="absolute right-4 top-1/2 -translate-y-1/2 bg-white/70 hover:bg-orange-500 hover:text-white text-orange-600 w-10 h-10 rounded-full z-30 transition" id="slideNext">❯</button>
+      </div>
+      
+    </section>
+
+    <!-- SEARCH CARD (TN cities) -->
+    <section class="relative -mt-14 z-20 max-w-4xl mx-auto px-4">
+      <div class="bg-white dark:bg-slate-800 rounded-2xl shadow-2xl border border-orange-100 dark:border-orange-800 p-6 md:p-8">
+        <div class="flex items-center gap-2 text-slate-700 dark:text-slate-200 mb-5">
+          <span class="bg-orange-100 dark:bg-orange-900 text-orange-800 dark:text-orange-200 p-2 rounded-xl text-lg">🔎</span>
+          <h2 class="text-2xl font-semibold">Find TN trains & metro</h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-4 items-end">
+          <div><label class="block text-xs font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400 mb-1">From</label>
+            <div class="relative"><span class="absolute left-3 top-3 text-slate-400 text-xl">📍</span>
+            <input id="from" type="text" placeholder="Chennai Central" value="Chennai Central" class="w-full pl-10 pr-3 py-3 border border-slate-200 dark:border-slate-600 rounded-xl bg-slate-50 dark:bg-slate-700 focus:bg-white dark:focus:bg-slate-600 input-focus-ring transition dark:text-white"></div></div>
+          <div><label class="block text-xs font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400 mb-1">To</label>
+            <div class="relative"><span class="absolute left-3 top-3 text-slate-400 text-xl">🎯</span>
+            <input id="to" type="text" placeholder="Coimbatore" value="Coimbatore" class="w-full pl-10 pr-3 py-3 border border-slate-200 dark:border-slate-600 rounded-xl bg-slate-50 dark:bg-slate-700 focus:bg-white dark:focus:bg-slate-600 input-focus-ring transition dark:text-white"></div></div>
+          <div><label class="block text-xs font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400 mb-1">Date</label>
+            <div class="relative"><span class="absolute left-3 top-3 text-slate-400">📅</span>
+            <input type="date" value="2026-03-18" class="w-full pl-10 pr-3 py-3 border border-slate-200 dark:border-slate-600 rounded-xl bg-slate-50 dark:bg-slate-700 focus:bg-white dark:focus:bg-slate-600 input-focus-ring transition text-slate-600 dark:text-white"></div></div>
+          <div>
+            <button id="searchBtn" class="w-full bg-orange-600 hover:bg-orange-700 text-white font-semibold py-3 px-5 rounded-xl shadow-lg shadow-orange-200 dark:shadow-orange-900/30 hover:shadow-xl transition flex items-center justify-center gap-2 text-lg"><span>🔍</span> Search</button>
+          </div>
+        </div>
+        <!-- recent searches -->
+        <div class="flex flex-wrap gap-3 mt-5 pt-2 border-t border-orange-100 dark:border-orange-800 text-sm"><span class="text-slate-500 dark:text-slate-400 font-medium">Recent TN routes:</span><a href="#" class="bg-orange-50 dark:bg-slate-700 hover:bg-orange-100 dark:hover:bg-slate-600 px-3 py-1.5 rounded-full text-orange-700 dark:text-orange-200 transition">Chennai → Madurai</a><a href="#" class="bg-orange-50 dark:bg-slate-700 hover:bg-orange-100 dark:hover:bg-slate-600 px-3 py-1.5 rounded-full text-orange-700 dark:text-orange-200 transition">Chennai → Coimbatore</a><a href="#" class="bg-orange-50 dark:bg-slate-700 hover:bg-orange-100 dark:hover:bg-slate-600 px-3 py-1.5 rounded-full text-orange-700 dark:text-orange-200 transition">Chennai Metro</a></div>
+      </div>
+    </section>
+
+    <!-- ===== NEW: POPULAR ROUTES (Tamil Nadu) ===== -->
+    <section class="max-w-7xl mx-auto px-6 mt-16">
+      <div class="text-center mb-10">
+        <span class="text-orange-600 dark:text-orange-400 font-semibold tracking-wide text-sm">TAMIL NADU'S FAVOURITES</span>
+        <h3 class="text-3xl font-bold text-slate-800 dark:text-white mt-1">Popular Routes</h3>
+        <p class="text-slate-500 dark:text-slate-400 max-w-2xl mx-auto mt-2">Most booked train & metro connections this month</p>
+      </div>
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+        <!-- route card 1 -->
+        <div class="bg-white dark:bg-slate-800 rounded-xl shadow-soft p-4 text-center border border-orange-100 dark:border-orange-800 hover-lift">
+          <img src="assets/img/popular-routs/img-2.jpg" alt="">
+          <div class="font-semibold">Chennai → Madurai</div>
+          <div class="text-sm text-slate-500">Daily 12 trains</div>
+        </div>
+        <!-- route card 2 -->
+        <div class="bg-white dark:bg-slate-800 rounded-xl shadow-soft p-4 text-center border border-orange-100 dark:border-orange-800 hover-lift">
+        <img src="assets/img/popular-routs/img-1.jpg" alt="">
+          <div class="font-semibold">Chennai Metro</div>
+          <div class="text-sm text-slate-500">Washermanpet-Airport</div>
+        </div>
+        <!-- route card 3 -->
+        <div class="bg-white dark:bg-slate-800 rounded-xl shadow-soft p-4 text-center border border-orange-100 dark:border-orange-800 hover-lift">
+           <img src="assets/img/popular-routs/img-3.jpg" alt="">
+          <div class="font-semibold">Coimbatore → Chennai</div>
+          <div class="text-sm text-slate-500">8 daily express</div>
+        </div>
+        <!-- route card 4 -->
+        <div class="bg-white dark:bg-slate-800 rounded-xl shadow-soft p-4 text-center border border-orange-100 dark:border-orange-800 hover-lift">
+           <img src="assets/img/popular-routs/img-4.png" alt="">
+          <div class="font-semibold">Tiruchy → Chennai</div>
+          <div class="text-sm text-slate-500">via Pallavan</div>
+        </div>
+        <!-- route card 5 -->
+        <div class="bg-white dark:bg-slate-800 rounded-xl shadow-soft p-4 text-center border border-orange-100 dark:border-orange-800 hover-lift">
+           <img src="assets/img/popular-routs/img-3.jpg" alt="">
+          <div class="font-semibold">Mettupalayam → Ooty</div>
+          <div class="text-sm text-slate-500">Nilgiri Mountain</div>
+        </div>
+        <!-- route card 6 -->
+        <div class="bg-white dark:bg-slate-800 rounded-xl shadow-soft p-4 text-center border border-orange-100 dark:border-orange-800 hover-lift">
+           <img src="assets/img/popular-routs/img-2.jpg" alt="">
+          <div class="font-semibold">Chennai → Kanyakumari</div>
+          <div class="text-sm text-slate-500">Sunset express</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== WHY CHOOSE BookTrain (features with icons) ===== -->
+    <section class="max-w-7xl mx-auto px-6 mt-20">
+      <div class="text-center mb-12">
+        <span class="text-orange-600 dark:text-orange-400 font-semibold tracking-wide text-xl">WHY CHOOSE BookTrain</span>
+        <h3 class="text-3xl font-bold text-slate-800 dark:text-white mt-1">Designed for Tamil Nadu travellers</h3>
+        <p class="text-slate-500 dark:text-slate-400 max-w-2xl mx-auto mt-3">We understand local needs — from Chennai Metro to Madurai express</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-7">
+        <div class="bg-white dark:bg-slate-800 rounded-2xl shadow-soft hover-lift p-6 border border-orange-100 dark:border-orange-800">
+          <div class="bg-orange-100 dark:bg-orange-900 w-14 h-14 rounded-2xl flex items-center justify-center text-3xl mb-5 text-orange-700 dark:text-orange-300">📱</div>
+          <h4 class="text-xl font-semibold mb-2 dark:text-white">Tamil interface</h4>
+          <p class="text-slate-500 dark:text-slate-400">Book in Tamil or English · local support</p>
+        </div>
+        <div class="bg-white dark:bg-slate-800 rounded-2xl shadow-soft hover-lift p-6 border border-orange-100 dark:border-orange-800">
+          <div class="bg-orange-100 dark:bg-orange-900 w-14 h-14 rounded-2xl flex items-center justify-center text-3xl mb-5 text-orange-700 dark:text-orange-300">🚇</div>
+          <h4 class="text-xl font-semibold mb-2 dark:text-white">Chennai Metro integration</h4>
+          <p class="text-slate-500 dark:text-slate-400">QR tickets & live train timing</p>
+        </div>
+        <div class="bg-white dark:bg-slate-800 rounded-2xl shadow-soft hover-lift p-6 border border-orange-100 dark:border-orange-800">
+          <div class="bg-orange-100 dark:bg-orange-900 w-14 h-14 rounded-2xl flex items-center justify-center text-3xl mb-5 text-orange-700 dark:text-orange-300">🔒</div>
+          <h4 class="text-xl font-semibold mb-2 dark:text-white">Secure UPI / cards</h4>
+          <p class="text-slate-500 dark:text-slate-400">BHIM, GPay, PhonePe accepted</p>
+        </div>
+        <div class="bg-white dark:bg-slate-800 rounded-2xl shadow-soft hover-lift p-6 border border-orange-100 dark:border-orange-800">
+          <div class="bg-orange-100 dark:bg-orange-900 w-14 h-14 rounded-2xl flex items-center justify-center text-3xl mb-5 text-orange-700 dark:text-orange-300">🔄</div>
+          <h4 class="text-xl font-semibold mb-2 dark:text-white">Free cancellation</h4>
+          <p class="text-slate-500 dark:text-slate-400">Up to 30min before departure</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== TESTIMONIALS (Trust section) ===== -->
+    <section class="max-w-6xl mx-auto px-6 mt-20 bg-orange-100 p-10 rounded-2xl">
+      <div class="text-center mb-12">
+        <span class="text-orange-600 dark:text-white-400 font-semibold tracking-wide text-xl">REAL STORIES</span>
+        <h3 class="text-3xl font-bold text-slate-800 dark:text-white mt-1">Trusted by travellers across TN</h3>
+        <p class="text-slate-500 dark:text-slate-400 max-w-2xl mx-auto mt-3">What our passengers say about BookTrain</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- testimonial 1 -->
+        <div class="testimonial-card">
+          <div class="flex items-center gap-2 text-orange-500 mb-3">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+          </div>
+          <p class="text-slate-700 dark:text-slate-300 italic">"I use BookTrain for my weekly Chennai–Coimbatore trip. Metro connection updates are spot on!"</p>
+          <div class="mt-4 flex items-center gap-3">
+             <div class="w-20 h-30 bg-white-200 rounded-full flex items-center justify-center text-orange-700 font-bold"><img class="w-20 h-20 bg-orange-200 rounded-full flex items-center justify-center text-orange-700 font-bold" src="assets/img/monals/test-1.jpg" alt="testimonals"></div>
+            <div><p class="font-semibold dark:text-white">Ramesh Kumar</p><p class="text-xs text-slate-500">Coimbatore · 12 trips</p></div>
+          </div>
+        </div>
+        <!-- testimonial 2 -->
+        <div class="testimonial-card">
+          <div class="flex items-center gap-2 text-orange-500 mb-3">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+          </div>
+          <p class="text-slate-700 dark:text-slate-300 italic">"Booked Nilgiri Mountain Rail within minutes. The e-ticket had clear instructions for the toy train."</p>
+          <div class="mt-4 flex items-center gap-3">
+             <div class="w-20 h-30 bg-white-200 rounded-full flex items-center justify-center text-orange-700 font-bold"><img class="w-20 h-20 bg-orange-200 rounded-full flex items-center justify-center text-orange-700 font-bold" src="assets/img/monals/test-2.jpg" alt="testimonals"></div>
+            <div><p class="font-semibold dark:text-white">Saranya P</p><p class="text-xs text-slate-500">Ooty traveller</p></div>
+          </div>
+        </div>
+        <!-- testimonial 3 -->
+        <div class="testimonial-card">
+          <div class="flex items-center gap-2 text-orange-500 mb-3">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+          </div>
+          <p class="text-slate-700 dark:text-slate-300 italic">"Chennai Metro QR works perfectly. No more token queues. Thanks BookTrain!"</p>
+          <div class="mt-4 flex items-center gap-3">
+            <div class="w-20 h-30 bg-white-200 rounded-full flex items-center justify-center text-orange-700 font-bold"><img class="w-20 h-20 bg-orange-200 rounded-full flex items-center justify-center text-orange-700 font-bold" src="assets/img/monals/test-3.jpg" alt="testimonals"></div>
+            <div><p class="font-semibold dark:text-white">Ramani J</p><p class="text-xs text-slate-500">Chennai daily commuter</p></div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- trust badges -->
+      <div class="flex flex-wrap justify-center gap-8 mt-12 text-slate-500 dark:text-slate-400">
+        <span><i class="fas fa-shield-alt text-orange-500 mr-2 text-4xl"></i>IRCTC Authorised</span>
+        <span><i class="fas fa-lock text-orange-500 mr-2 text-4xl"></i>PCI DSS Compliant</span>
+        <span><i class="fas fa-headset text-orange-500 mr-2 text-4xl"></i>24/7 Tamil support</span>
+      </div>
+    </section>
+  </div>
+
+  <!-- other pages (simplified, hidden) -->
+  <div id="resultsPage" class="page" style="display: none;"></div>
+  <div id="pnrPage" class="page" style="display: none;"></div>
+  <div id="bookingPage" class="page" style="display: none;"></div>
+  <div id="ticketPage" class="page" style="display: none;"></div>
+  <div id="historyPage" class="page" style="display: none;"></div>
+
+  <!-- FOOTER -->
+  <footer class="mt-24 bg-orange-50 dark:bg-slate-900 text-slate-700 dark:text-slate-300 py-12 border-t border-orange-200 dark:border-orange-800">
+    <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+      <div><h6 class="text-orange-600 dark:text-orange-400 text-lg font-semibold mb-4 flex items-center gap-2"><span class="text-3xl">🚆</span> <span class="text-4xl font-bold text-slate-800 dark:text-white tracking-tight ">Book<span class="text-orange-600 dark:text-orange-400">Train</span></span></h6><p class="text-sm leading-relaxed">Tamil Nadu's own train & metro booking.</p></div>
+      <div><h6 class="font-semibold mb-4 text-slate-800 dark:text-white">Quick links</h6><ul class="space-y-2 text-sm"><li><a href="index.html" class="hover:text-orange-600">Home</a></li><li><a href="results.html" class="hover:text-orange-600">Search</a></li><li><a href="pnr.html" class="hover:text-orange-600">PNR</a></li><li><a href="history.html" class="hover:text-orange-600">History</a></li></ul></div>
+      <div><h6 class="font-semibold mb-4 text-slate-800 dark:text-white">TN Special</h6><ul class="space-y-2 text-sm"><li><a href="#" class="hover:text-orange-600">Chennai Metro</a></li><li><a href="#" class="hover:text-orange-600">Nilgiri Mountain</a></li></ul></div>
+      <div><h6 class="font-semibold mb-4 text-slate-800 dark:text-white">Contact</h6><p class="text-sm">📧 hello@BookTrain.tn<br>📞 044-2345-6789</p></div>
+    </div>
+    <div class="max-w-7xl mx-auto px-6 mt-10 pt-6 border-t border-orange-200 dark:border-orange-800 text-center text-sm text-slate-500">© 2026 BookTrain – Tamil Nadu's favourite railway platform</div>
+  </footer>
+
+  <!-- ========== INDIVIDUAL JAVASCRIPT (script.js) ========== -->
+ <script src="assets/js/script.js"></script>
+</body>
+</html>
