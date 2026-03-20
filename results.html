@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BookTrain · Tamil Nadu's own train & metro</title>
+    <!-- Tailwind for layout helpers only -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- ========== CSS  ========== -->
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+
+
+<body>
+    <!-- RESULT.HTML -->
+
+    <!-- NAVBAR (white + orange) -->
+    <nav
+        class="bg-white/95 backdrop-blur-sm border-b border-orange-200 sticky top-0 z-30 shadow-sm dark:bg-slate-800/90 dark:border-orange-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex justify-between items-center">
+            <!-- logo BookTrain (orange) -->
+            <a href="index.html" class="flex items-center gap-2 group" id="logo-link">
+                <span class="text-3xl transform group-hover:scale-110 transition duration-300">🚆</span>
+                <span class="text-4xl font-bold text-slate-800 dark:text-white tracking-tight ">Book<span
+                        class="text-orange-600 dark:text-orange-400">Train</span></span>
+            </a>
+
+            <!-- main nav -->
+            <ul class="hidden md:flex gap-6 text-slate-600 dark:text-slate-300 font-medium">
+                <li><a href="index.html" class="nav-link pb-1 px-0.5">Home</a></li>
+                <li><a href="results.html" class="nav-link pb-1 px-0.5">Search</a></li>
+                <li><a href="booking.html" class="nav-link pb-1 px-0.5">Booking</a></li>
+                <li><a href="ticket.html" class="nav-link pb-1 px-0.5">e-Ticket</a></li>
+                <li><a href="pnr.html" class="nav-link pb-1 px-0.5">PNR</a></li>
+                <li><a href="history.html" class="nav-link pb-1 px-0.5">History</a></li>
+            </ul>
+
+            <!-- dark toggle -->
+            <button id="darkToggle"
+                class="text-orange-600 bg-orange-50 p-2 rounded-full hover:bg-orange-100 text-sm dark:bg-orange-900 dark:text-orange-200"><i
+                    class="fas fa-moon"></i></button>
+        </div>
+        <!-- mobile menu -->
+        <div class="md:hidden flex justify-center gap-4 text-sm pb-2 text-slate-600 dark:text-slate-300">
+            <a href="index.html" class="hover:text-orange-600">Home</a><a href="results.html"
+                class="hover:text-orange-600">Search</a><a href="pnr.html" class="hover:text-orange-600">PNR</a><a
+                href="booking.html" class="hover:text-orange-600">Book</a><a href="ticket.html"
+                class="hover:text-orange-600">Ticket</a><a href="history.html" class="hover:text-orange-600">History</a>
+        </div>
+    </nav>
+
+    <!-- SEARCH SUMMARY BAR -->
+    <div class="search-bar">
+        <div class="search-summary">
+            <span class="search-summary__arrow">➡️</span>
+            <button><a href="index.html">Modify</a></button>
+
+        </div>
+    </div>
+
+    <!-- filter bar -->
+    <div class="filter-bar">
+        <div class="filter">
+            <span>🔧 Filter</span>
+            <select id="filterClass" class="filter-class">
+                <option value="">All Classes</option>
+                <option value="SL">Sleeper (SL)</option>
+                <option value="3A">AC 3 Tier (3A)</option>
+                <option value="2A">AC 2 Tier (2A)</option>
+                <option value="1A">First AC (1A)</option>
+            </select>
+            <span id="resultCount" class="result-count">0 train(s) found</span>
+        </div>
+
+    </div>
+
+    <!-- status-bar -->
+    <div class="status-container">
+        <div class="status-item">
+            <span class="dot green"></span> AVL = Available
+        </div>
+        <div class="status-item">
+            <span class="dot orange"></span> AVL ≤10 = Few seats
+        </div>
+        <div class="status-item">
+            <span class="dot red"></span> WL = Waitlist
+        </div>
+    </div>
+
+    <!-- train list -->
+    <div id="trainList">
+
+        <!-- Card 1 -->
+        <div class="skeleton-card">
+            <div class="skeleton title"></div>
+            <div class="skeleton subtitle"></div>
+
+            <div class="row">
+                <div class="skeleton box"></div>
+                <div class="skeleton line"></div>
+                <div class="skeleton box"></div>
+            </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="skeleton-card">
+            <div class="skeleton title small"></div>
+            <div class="skeleton subtitle small"></div>
+
+            <div class="row">
+                <div class="skeleton box"></div>
+                <div class="skeleton line"></div>
+                <div class="skeleton box"></div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="assets/js/seat.js"></script>
+    <script src="assets/js/data.js"></script>
+    <script src="assets/js/results.js"></script>
+    <script src="assets/js/script.js"></script>
+</body>
+
+</html>
