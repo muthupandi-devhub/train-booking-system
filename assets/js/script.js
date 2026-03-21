@@ -224,4 +224,99 @@
       });
     });
 
-    
+    let tickets = JSON.parse(localStorage.getItem("tickets")) || [];
+
+tickets.push({
+  name: "User",
+  train: "Express",
+  from: "Chennai",
+  to: "Madurai",
+  pnr: Math.floor(100000 + Math.random() * 900000),
+  status: "Booked"
+});
+
+localStorage.setItem("tickets", JSON.stringify(tickets));
+
+
+        // Store element references to keep code clean
+        const pnrInput = document.getElementById('pnrInput');
+        const alertBox = document.getElementById('alertBox');
+        const successBox = document.getElementById('successBox');
+        const loadingState = document.getElementById('loadingState');
+        const statusResult = document.getElementById('statusResult');
+        const recentBookings = document.getElementById('recentBookings');
+
+        /**
+         * Fills the input with demo data and shows a success notification.
+         */
+        function fillDemo(num) {
+            // Remove 'TN' if present to simulate clean typing
+            pnrInput.value = num.replace('TN', '');
+
+            // Show the top success notification
+            successBox.classList.remove('hidden');
+            document.getElementById('loadedPnr').innerText = 'TN' + pnrInput.value;
+            alertBox.classList.add('hidden');
+
+            // Auto-hide the success message after 3 seconds
+            setTimeout(() => successBox.classList.add('hidden'), 3000);
+        }
+
+        /**
+         * Handles the main 'Check' logic:
+         * 1. Validates input
+         * 2. Shows loading state
+         * 3. Reveals results
+         */
+       function handleCheck() {
+  const input = document.getElementById('pnrInput').value.trim();
+  const booking = JSON.parse(sessionStorage.getItem('tn_current_booking'));
+
+  const alertBox = document.getElementById('alertBox');
+  const statusResult = document.getElementById('statusResult');
+  const loadingState = document.getElementById('loadingState');
+
+  alertBox.classList.add('hidden');
+  statusResult.classList.add('hidden');
+
+  if (input === "") {
+    alertBox.classList.remove('hidden');
+    alertBox.innerText = "Enter PNR Number";
+    return;
+  }
+
+  loadingState.classList.remove('hidden');
+
+  setTimeout(() => {
+    loadingState.classList.add('hidden');
+
+    if (booking && booking.pnr) {
+
+      if (booking.pnr.includes(input)) {
+
+        // ✅ PNR show dynamic
+        document.getElementById('resultPnr').innerText = booking.pnr;
+
+        statusResult.classList.remove('hidden');
+
+      } else {
+        alertBox.classList.remove('hidden');
+        alertBox.innerText = "PNR Not Found ❌";
+      }
+
+    } else {
+      alertBox.classList.remove('hidden');
+      alertBox.innerText = "No Booking Found ❌";
+    }
+
+  }, 1200);
+}
+        function goToTicket() {
+            // You could save the PNR to localStorage here if needed
+            const pnr = document.getElementById('pnrInput').value;
+            localStorage.setItem('currentPNR', pnr);
+
+            // Then redirect to the new page
+            window.location.href = "ticket.html";
+        }
+   
