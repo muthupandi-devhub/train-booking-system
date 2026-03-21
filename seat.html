@@ -1,39 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Select Seats — BookTrain</title>
-
-  <!-- Tailwind -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
-  <!-- Google Fonts -->
-  <link
-    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Nunito:wght@400;500;600;700&display=swap"
-    rel="stylesheet" />
-  <!--CSS -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
-
 <body>
 
-  <!-- ══════════════════════════════════════
-     NAVBAR
-══════════════════════════════════════ -->
-  <nav
-    class="bg-white/95 backdrop-blur-sm border-b border-orange-200 sticky top-0 z-30 shadow-sm dark:bg-slate-800/90 dark:border-orange-800">
+  <!-- NAVBAR -->
+  <nav class="bg-white/95 backdrop-blur-sm border-b border-orange-200 sticky top-0 z-30 shadow-sm dark:bg-slate-800/90 dark:border-orange-800">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex justify-between items-center">
-      <!-- logo BookTrain (orange) -->
       <a href="index.html" class="flex items-center gap-2 group" id="logo-link">
         <span class="text-3xl transform group-hover:scale-110 transition duration-300">🚆</span>
-        <span class="text-4xl font-bold text-slate-800 dark:text-white tracking-tight ">Book<span
-            class="text-orange-600 dark:text-orange-400">Train</span></span>
+        <span class="text-4xl font-bold text-slate-800 dark:text-white tracking-tight">Book<span class="text-orange-600 dark:text-orange-400">Train</span></span>
       </a>
-
-      <!-- main nav -->
       <ul class="hidden md:flex gap-6 text-slate-600 dark:text-slate-300 font-medium">
         <li><a href="index.html" class="nav-link pb-1 px-0.5">Home</a></li>
         <li><a href="results.html" class="nav-link pb-1 px-0.5">Search</a></li>
@@ -42,18 +26,15 @@
         <li><a href="pnr.html" class="nav-link pb-1 px-0.5">PNR</a></li>
         <li><a href="history.html" class="nav-link pb-1 px-0.5">History</a></li>
       </ul>
-
-      <!-- dark toggle -->
-      <button id="darkToggle"
-        class="text-orange-600 bg-orange-50 p-2 rounded-full hover:bg-orange-100 text-sm dark:bg-orange-900 dark:text-orange-200"><i
-          class="fas fa-moon"></i></button>
+      <button id="darkToggle" class="text-orange-600 bg-orange-50 p-2 rounded-full hover:bg-orange-100 text-sm dark:bg-orange-900 dark:text-orange-200"><i class="fas fa-moon"></i></button>
     </div>
-    <!-- mobile menu -->
     <div class="md:hidden flex justify-center gap-4 text-sm pb-2 text-slate-600 dark:text-slate-300">
-      <a href="index.html" class="hover:text-orange-600">Home</a><a href="results.html"
-        class="hover:text-orange-600">Search</a><a href="pnr.html" class="hover:text-orange-600">PNR</a><a
-        href="booking.html" class="hover:text-orange-600">Book</a><a href="ticket.html"
-        class="hover:text-orange-600">Ticket</a><a href="history.html" class="hover:text-orange-600">History</a>
+      <a href="index.html" class="hover:text-orange-600">Home</a>
+      <a href="results.html" class="hover:text-orange-600">Search</a>
+      <a href="pnr.html" class="hover:text-orange-600">PNR</a>
+      <a href="booking.html" class="hover:text-orange-600">Book</a>
+      <a href="ticket.html" class="hover:text-orange-600">Ticket</a>
+      <a href="history.html" class="hover:text-orange-600">History</a>
     </div>
   </nav>
 
@@ -68,14 +49,11 @@
   <!-- Toast container -->
   <div id="toastContainer"></div>
 
-  <!-- ══════════════════════════════════════
-     MAIN
-══════════════════════════════════════ -->
+  <!-- MAIN -->
   <main class="main">
 
     <!-- 1. Journey Info Card -->
     <div class="journey-card" id="journeyCard">
-      <!-- Filled by booking.js / inline script -->
       <div style="color:rgba(255,255,255,.5);font-size:13px;text-align:center;padding:12px 0">
         Loading journey info…
       </div>
@@ -84,28 +62,21 @@
     <!-- 2. Progress Stepper -->
     <div class="card" style="padding:16px 20px">
       <div class="stepper">
-        <!-- Step 1: Train -->
         <div class="step-item">
           <div class="step-circle done">✓</div>
           <div class="step-label done">Train</div>
         </div>
         <div class="step-connector done"></div>
-
-        <!-- Step 2: Seats (active) -->
         <div class="step-item">
           <div class="step-circle active">2</div>
           <div class="step-label active">Seats</div>
         </div>
         <div class="step-connector inactive"></div>
-
-        <!-- Step 3: Details -->
         <div class="step-item">
           <div class="step-circle inactive">3</div>
           <div class="step-label">Details</div>
         </div>
         <div class="step-connector inactive"></div>
-
-        <!-- Step 4: Payment -->
         <div class="step-item">
           <div class="step-circle inactive">4</div>
           <div class="step-label">Payment</div>
@@ -117,24 +88,10 @@
     <div class="card">
       <div class="legend">
         <span class="legend-title">Legend</span>
-
-        <div class="legend-item">
-          <div class="legend-swatch available"></div>
-          <span>Available</span>
-        </div>
-        <div class="legend-item">
-          <div class="legend-swatch selected"></div>
-          <span>Selected</span>
-        </div>
-        <div class="legend-item">
-          <div class="legend-swatch booked"></div>
-          <span>Booked</span>
-        </div>
-
-        <div class="legend-max">
-          <i class="fas fa-info-circle" style="margin-right:4px"></i>
-          Max 6 seats / booking
-        </div>
+        <div class="legend-item"><div class="legend-swatch available"></div><span>Available</span></div>
+        <div class="legend-item"><div class="legend-swatch selected"></div><span>Selected</span></div>
+        <div class="legend-item"><div class="legend-swatch booked"></div><span>Booked</span></div>
+        <div class="legend-max"><i class="fas fa-info-circle" style="margin-right:4px"></i>Max 6 seats / booking</div>
       </div>
     </div>
 
@@ -151,7 +108,6 @@
 
     <!-- 5. Seat Grid Card -->
     <div class="card seat-card">
-      <!-- Header -->
       <div class="seat-card-header">
         <div class="seat-card-title-wrap">
           <div class="coach-stripe"></div>
@@ -165,66 +121,28 @@
           Window →
         </div>
       </div>
-
-      <!-- Berth column headers -->
       <div class="berth-header">
-        <div class="berth-label">LB</div>
-        <div class="berth-label">MB</div>
-        <div class="berth-label">UB</div>
-        <div class="berth-label">SL</div>
-        <div class="berth-label">SU</div>
-        <div></div><!-- aisle -->
-        <div class="berth-label">LB</div>
-        <div class="berth-label">UB</div>
+        <div class="berth-label">LB</div><div class="berth-label">MB</div>
+        <div class="berth-label">UB</div><div class="berth-label">SL</div>
+        <div class="berth-label">SU</div><div></div>
+        <div class="berth-label">LB</div><div class="berth-label">UB</div>
       </div>
-
-      <!-- Seat grid (generated by booking.js) -->
       <div id="seatGrid">
-        <!-- Loading shimmer -->
+        <!-- shimmer placeholder -->
         <div style="display:flex;flex-direction:column;gap:12px;padding:8px 0">
           <div style="display:grid;grid-template-columns:repeat(8,1fr);gap:6px">
-            <script>
-              for (let i = 0; i < 8; i++) document.write(
-                `<div style="aspect-ratio:1;border-radius:8px;
-                           background:linear-gradient(90deg,#e2e8f0 25%,#f8fafc 50%,#e2e8f0 75%);
-                           background-size:200% 100%;
-                           animation:shimmer 1.4s infinite"></div>`
-              );
-            </script>
-          </div>
-          <div style="display:grid;grid-template-columns:repeat(8,1fr);gap:6px">
-            <script>
-              for (let i = 0; i < 8; i++) document.write(
-                `<div style="aspect-ratio:1;border-radius:8px;
-                           background:linear-gradient(90deg,#e2e8f0 25%,#f8fafc 50%,#e2e8f0 75%);
-                           background-size:200% 100%;
-                           animation:shimmer 1.4s infinite;animation-delay:${i * 0.07}s"></div>`
-              );
-            </script>
+            <script>for(var _i=0;_i<8;_i++)document.write('<div style="aspect-ratio:1;border-radius:8px;background:linear-gradient(90deg,#e2e8f0 25%,#f8fafc 50%,#e2e8f0 75%);background-size:200% 100%;animation:shimmer 1.4s infinite"></div>');</script>
           </div>
         </div>
-        <style>
-          @keyframes shimmer {
-            0% {
-              background-position: -200% 0;
-            }
-
-            100% {
-              background-position: 200% 0;
-            }
-          }
-        </style>
+        <style>@keyframes shimmer{0%{background-position:-200% 0}100%{background-position:200% 0}}</style>
       </div>
     </div>
 
   </main>
 
-  <!-- ══════════════════════════════════════
-     STICKY FOOTER
-══════════════════════════════════════ -->
+  <!-- STICKY FOOTER -->
   <div class="sticky-footer">
     <div class="footer-inner">
-      <!-- Summary row -->
       <div class="footer-info">
         <div class="footer-left">
           <div class="footer-count">
@@ -240,22 +158,22 @@
         </div>
       </div>
 
-      <!-- Proceed button -->
-      <button class="proceed-btn" id="proceedBtn"> <a href="booking.html">
-          <i class="fas fa-arrow-right"></i>
-          Continue to Passenger Details
-        </a>
+      <!--
+        FIX: removed the <a href="booking.html"> wrapper.
+        The button is properly wired to proceedFromSeat() which saves
+        seat data to sessionStorage BEFORE navigating to booking.html.
+        If no seats are selected the button is disabled (set by updateSeatSummary).
+      -->
+      <button class="proceed-btn" id="proceedBtn" onclick="proceedFromSeat()" disabled>
+        <i class="fas fa-arrow-right"></i>
+        Continue to Passenger Details
       </button>
-
-      <!-- onclick="proceedFromSeat()" disabled -->
     </div>
   </div>
-
 
   <script src="assets/js/seat.js"></script>
   <script src="assets/js/data.js"></script>
   <script src="assets/js/results.js"></script>
   <script src="assets/js/script.js"></script>
 </body>
-
 </html>

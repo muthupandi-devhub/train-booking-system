@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BookTrain · Passenger Details</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🚆</text></svg>">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="bg-gray-100 font-[Poppins]" id="body_1">
+
+  <nav class="bg-white/95 backdrop-blur-sm border-b border-orange-200 sticky top-0 z-30 shadow-sm dark:bg-slate-800/90 dark:border-orange-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex justify-between items-center">
+      <a href="index.html" class="flex items-center gap-2 group" id="logo-link">
+        <span class="text-3xl transform group-hover:scale-110 transition duration-300">🚆</span>
+        <span class="text-4xl font-bold text-slate-800 dark:text-white tracking-tight">Book<span class="text-orange-600 dark:text-orange-400">Train</span></span>
+      </a>
+      <ul class="hidden md:flex gap-6 text-slate-600 dark:text-slate-300 font-medium">
+        <li><a href="index.html" class="nav-link pb-1 px-0.5">Home</a></li>
+        <li><a href="results.html" class="nav-link pb-1 px-0.5">Search</a></li>
+        <li><a href="booking.html" class="nav-link pb-1 px-0.5">Booking</a></li>
+        <li><a href="ticket.html" class="nav-link pb-1 px-0.5">e-Ticket</a></li>
+        <li><a href="pnr.html" class="nav-link pb-1 px-0.5">PNR</a></li>
+        <li><a href="history.html" class="nav-link pb-1 px-0.5">History</a></li>
+      </ul>
+      <button id="darkToggle1" class="text-orange-600 bg-orange-50 p-2 rounded-full hover:bg-orange-100 text-sm dark:bg-orange-900 dark:text-orange-200"><i class="fas fa-moon"></i></button>
+    </div>
+    <div class="md:hidden flex justify-center gap-4 text-sm pb-2 text-slate-600 dark:text-slate-300">
+      <a href="index.html" class="hover:text-orange-600">Home</a><a href="results.html" class="hover:text-orange-600">Search</a><a href="pnr.html" class="hover:text-orange-600">PNR</a><a href="booking.html" class="hover:text-orange-600">Book</a><a href="ticket.html" class="hover:text-orange-600">Ticket</a><a href="history.html" class="hover:text-orange-600">History</a>
+    </div>
+  </nav>
+
+    <!-- MAIN CONTAINER -->
+    <div class="container">
+
+        <!-- PASSENGER FORM 1 -->
+        <div class="person_info_1" id="person_info_1">
+            <div class="person_info_title"><h2 class="person_count">1</h2><h2>Passenger Information</h2></div>
+            <div class="info_container"><h4>Passenger 1</h4><h4>Seat — | —</h4></div>
+            <div class="person_info_content">
+                <div class="group"><label id="person_1_red_name">FULL NAME*</label><br><input type="text" placeholder="Enter full name" id="person_1_name"></div>
+                <div class="group"><label id="person_1_red_age">AGE*</label><br><input type="number" placeholder="Age" min="1" max="100" id="person_1_age"></div>
+                <div class="group"><label id="person_1_red_gender">GENDER*</label><br>
+                    <select id="person_1_gender"><option value="">Select Gender</option><option>Male</option><option>Female</option><option>Other</option></select></div>
+                <div class="group"><label>FOOD PREFERENCES</label><br>
+                    <select><option>No Food Preference</option><option>Vegetarian</option><option>Non-Vegetarian</option><option>Vegan</option></select></div>
+            </div>
+        </div>
+
+        <!-- PASSENGER FORM 2 -->
+        <div class="person_info_2" id="person_info_2">
+            <div class="person_info_title"><h2 class="person_count">2</h2><h2>Passenger Information</h2></div>
+            <div class="info_container"><h4>Passenger 2</h4><h4>Seat — | —</h4></div>
+            <div class="person_info_content">
+                <div class="group"><label id="person_2_red_name">FULL NAME*</label><br><input type="text" placeholder="Enter full name" id="person_2_name"></div>
+                <div class="group"><label id="person_2_red_age">AGE*</label><br><input type="number" placeholder="Age" min="1" max="100" id="person_2_age"></div>
+                <div class="group"><label id="person_2_red_gender">GENDER*</label><br>
+                    <select id="person_2_gender"><option value="">Select Gender</option><option>Male</option><option>Female</option><option>Other</option></select></div>
+                <div class="group"><label>FOOD PREFERENCES</label><br>
+                    <select><option>No Food Preference</option><option>Vegetarian</option><option>Non-Vegetarian</option><option>Vegan</option></select></div>
+            </div>
+        </div>
+
+        <!-- PASSENGER FORM 3 -->
+        <div class="person_info_3" id="person_info_3">
+            <div class="person_info_title"><h2 class="person_count">3</h2><h2>Passenger Information</h2></div>
+            <div class="info_container"><h4>Passenger 3</h4><h4>Seat — | —</h4></div>
+            <div class="person_info_content">
+                <div class="group"><label id="person_3_red_name">FULL NAME*</label><br><input type="text" placeholder="Enter full name" id="person_3_name"></div>
+                <div class="group"><label id="person_3_red_age">AGE*</label><br><input type="number" placeholder="Age" min="1" max="100" id="person_3_age"></div>
+                <div class="group"><label id="person_3_red_gender">GENDER*</label><br>
+                    <select id="person_3_gender"><option value="">Select Gender</option><option>Male</option><option>Female</option><option>Other</option></select></div>
+                <div class="group"><label>FOOD PREFERENCES</label><br>
+                    <select><option>No Food Preference</option><option>Vegetarian</option><option>Non-Vegetarian</option><option>Vegan</option></select></div>
+            </div>
+        </div>
+
+        <!-- PASSENGER FORM 4 -->
+        <div class="person_info_4" id="person_info_4">
+            <div class="person_info_title"><h2 class="person_count">4</h2><h2>Passenger Information</h2></div>
+            <div class="info_container"><h4>Passenger 4</h4><h4>Seat — | —</h4></div>
+            <div class="person_info_content">
+                <div class="group"><label id="person_4_red_name">FULL NAME*</label><br><input type="text" placeholder="Enter full name" id="person_4_name"></div>
+                <div class="group"><label id="person_4_red_age">AGE*</label><br><input type="number" placeholder="Age" min="1" max="100" id="person_4_age"></div>
+                <div class="group"><label id="person_4_red_gender">GENDER*</label><br>
+                    <select id="person_4_gender"><option value="">Select Gender</option><option>Male</option><option>Female</option><option>Other</option></select></div>
+                <div class="group"><label>FOOD PREFERENCES</label><br>
+                    <select><option>No Food Preference</option><option>Vegetarian</option><option>Non-Vegetarian</option><option>Vegan</option></select></div>
+            </div>
+        </div>
+
+        <!-- PASSENGER FORM 5 -->
+        <div class="person_info_5" id="person_info_5">
+            <div class="person_info_title"><h2 class="person_count">5</h2><h2>Passenger Information</h2></div>
+            <div class="info_container"><h4>Passenger 5</h4><h4>Seat — | —</h4></div>
+            <div class="person_info_content">
+                <div class="group"><label id="person_5_red_name">FULL NAME*</label><br><input type="text" placeholder="Enter full name" id="person_5_name"></div>
+                <div class="group"><label id="person_5_red_age">AGE*</label><br><input type="number" placeholder="Age" min="1" max="100" id="person_5_age"></div>
+                <div class="group"><label id="person_5_red_gender">GENDER*</label><br>
+                    <select id="person_5_gender"><option value="">Select Gender</option><option>Male</option><option>Female</option><option>Other</option></select></div>
+                <div class="group"><label>FOOD PREFERENCES</label><br>
+                    <select><option>No Food Preference</option><option>Vegetarian</option><option>Non-Vegetarian</option><option>Vegan</option></select></div>
+            </div>
+        </div>
+
+        <!-- PASSENGER FORM 6 -->
+        <div class="person_info_6" id="person_info_6">
+            <div class="person_info_title"><h2 class="person_count">6</h2><h2>Passenger Information</h2></div>
+            <div class="info_container"><h4>Passenger 6</h4><h4>Seat — | —</h4></div>
+            <div class="person_info_content">
+                <div class="group"><label id="person_6_red_name">FULL NAME*</label><br><input type="text" placeholder="Enter full name" id="person_6_name"></div>
+                <div class="group"><label id="person_6_red_age">AGE*</label><br><input type="number" placeholder="Age" min="1" max="100" id="person_6_age"></div>
+                <div class="group"><label id="person_6_red_gender">GENDER*</label><br>
+                    <select id="person_6_gender"><option value="">Select Gender</option><option>Male</option><option>Female</option><option>Other</option></select></div>
+                <div class="group"><label>FOOD PREFERENCES</label><br>
+                    <select><option>No Food Preference</option><option>Vegetarian</option><option>Non-Vegetarian</option><option>Vegan</option></select></div>
+            </div>
+        </div>
+
+        <!-- LOADER -->
+        <div id="loader" class="hidden fixed inset-0 flex items-center justify-center bg-black/40 z-50">
+            <div class="w-16 h-16 border-4 border-orange-500 border-t-transparent rounded-full animate-spin"></div>
+        </div>
+
+        <!-- CONTACT INFO -->
+        <div class="contact_info">
+            <div class="contact_title"><i class="fa fa-phone"></i><h4>Contact Details</h4></div>
+            <div class="contact_box">
+                <form>
+                    <div class="group"><label id="person_red_email">EMAIL*</label><br><input type="email" placeholder="Enter your email" id="person__email"></div>
+                    <div class="group"><label id="person_red_phone">PHONE NUMBER*</label><br><input type="tel" placeholder="Enter your phone number" pattern="[0-9]{10}" id="person__phone"></div>
+                </form>
+            </div>
+        </div>
+
+    </div><!-- /container -->
+
+    <div class="top_container">
+
+        <div class="Booking_Summary">
+            <div class="max-w-4xl w-[95%] mx-auto my-6 bg-[#d9c7ae] p-6 rounded-xl shadow-md">
+                <!-- IDs on every data cell — shared.js fills these at runtime -->
+                <table class="w-full text-left border-collapse">
+                    <tr><td class="side">Train Name</td>       <td class="r_side" id="td_train_name">—</td></tr>
+                    <tr><td class="side">Route</td>            <td class="r_side" id="td_route">—</td></tr>
+                    <tr><td class="side">To</td>               <td class="r_side" id="td_to">—</td></tr>
+                    <tr><td class="side">Class</td>            <td class="r_side" id="td_class">—</td></tr>
+                    <tr><td class="side">Seats</td>            <td class="r_side" id="td_seats_info">—</td></tr>
+                    <tr><td class="side">Price per Passenger</td><td class="r_side" id="td_price">—</td></tr>
+                    <tr><td class="side">Total Passengers</td> <td class="r_side" id="td_passengers">—</td></tr>
+                    <tr><td class="side">GST (5%)</td>         <td class="r_side" id="td_gst">—</td></tr>
+                    <tr class="total_row"><td class="side">Total Price</td><td class="r_side" id="td_total">—</td></tr>
+                </table>
+                <div class="price_col">
+                    <button class="back_but" id="back_but">← Back to Seat Selection</button>
+                    <button class="pay_but"  id="pay_but">Continue to Payment</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="important">
+            <ul class="notes"><li>⚠️ Important Notes</li></ul>
+            <ul class="notes_list">
+                <li>Carry a valid government photo ID for travel</li>
+                <li>Name on ticket must match the ID proof</li>
+                <li>Booking is non-refundable after payment</li>
+                <li>Report at station 30 minutes before departure</li>
+            </ul>
+        </div>
+    </div>
+
+</body>
+
+<style>
+    body { margin:0; font-family:'Poppins',sans-serif; position:relative; font-size:16px; }
+    body::before { content:""; position:fixed; top:0; left:0; width:100%; height:100%;
+        background-image:url(image-b/ChatGPT\ Image\ Mar\ 19\,\ 2026\,\ 07_45_19\ PM.png);
+        background-size:cover; background-position:center; filter:blur(5px); z-index:-1; }
+    body::after { content:""; position:fixed; width:100%; height:100%;
+        background:rgba(255,255,255,0.6); z-index:-1; }
+    .container { width:100%; max-width:1100px; margin:0 auto; }
+    .person_info_1,.person_info_2,.person_info_3,.person_info_4,.person_info_5,.person_info_6,
+    .contact_info,.Booking_Summary,.important { width:90%; max-width:1000px; margin:20px auto; }
+    .person_info_1,.person_info_2,.person_info_3,.person_info_4,.person_info_5,.person_info_6 {
+        padding:20px; border:1px solid #ccc; border-radius:25px;
+        background:rgba(0,0,0,0.3); box-shadow:8px 8px 12px rgba(0,0,0,0.3); }
+    /* Default: hide all forms. shared.js shows only the correct count at runtime. */
+    .person_info_1,.person_info_2,.person_info_3,.person_info_4,.person_info_5 { display:none; }
+    .person_info_title { display:flex; align-items:center; margin-bottom:20px; }
+    .person_count { background-color:rgb(48,202,31); color:black; border-radius:50%;
+        width:40px; height:40px; display:flex; align-items:center; justify-content:center; margin-right:10px; }
+    .info_container { display:flex; justify-content:space-between; margin-bottom:20px; }
+    .person_info_content { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:20px; }
+    .group { line-height:1.5; }
+    .group input,.group select { width:90%; padding:10px; border:1px solid #ccc; border-radius:15px; }
+    .person_info_content .group label { color:rgb(251,251,251); }
+    .contact_info { padding:20px; border:1px solid #ccc; border-radius:25px;
+        background:rgba(0,0,0,0.3); box-shadow:8px 8px 12px rgba(0,0,0,0.3); }
+    .contact_box form { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:20px; align-items:center; }
+    .contact_box .group label { color:rgb(254,254,254); }
+    .Booking_Summary { border:1px black solid; border-radius:30px; margin:20px auto; width:90%;
+        max-width:1000px; background-color:rgb(157,137,111); padding:20px;
+        box-shadow:10px 10px 10px rgba(10,10,10,0.4); }
+    table { width:100%; border-collapse:collapse; }
+    td { padding:8px 0; }
+    .side { width:50%; }
+    .r_side { width:50%; text-align:right; }
+    .price_col { display:flex; justify-content:space-between; }
+    .top_container { display:flex; flex-direction:column; align-items:center; }
+    .pay_but { border:1px solid black; border-radius:10px; padding:10px; height:60px; width:240px;
+        background-color:#4137C3; margin-top:10px; text-align:center; cursor:pointer;
+        color:white; font-weight:600; font-family:'Poppins',sans-serif; font-size:14px; }
+    .pay_but:hover { background-color:#635ea3; }
+    .back_but { border:1px solid black; border-radius:10px; padding:10px;
+        background-color:rgb(194,104,96); margin-top:10px; height:60px; width:240px;
+        text-align:center; cursor:pointer; font-family:'Poppins',sans-serif; }
+    .back_but:hover { background-color:#a3a3e9; }
+    .notes { list-style-type:none; padding-left:20px; color:rgb(182,93,93); }
+    .notes_list { word-spacing:5px; line-height:20px; list-style-type:disc;
+        padding-left:40px; color:rgb(193,180,180); }
+    .important { margin:20px auto; padding:20px; border-radius:30px; border:1px black solid;
+        background:rgba(196,118,118,0.4); width:90%; max-width:1000px; }
+    .hidden { display:none; }
+    @media(max-width:600px) {
+        .group input { width:80%; height:10px; }
+        .group select { width:80%; height:40px; }
+        .price_col { flex-direction:column; gap:10px; }
+        .pay_but,.back_but { width:100%; }
+    }
+</style>
+
+<!-- SCRIPT ORDER: data.js → shared.js → payment.js -->
+<script src="assets/js/data.js"></script>
+<script src="shared.js"></script>
+<script src="payment.js"></script>
+<!-- script.js handles dark mode toggle for this page too -->
+<script src="assets/js/script.js"></script>
+</html>
