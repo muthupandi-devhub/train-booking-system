@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BookTrain · Tamil Nadu's own train & metro</title>
+    <!-- Tailwind for layout helpers only -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- ========== CSS  ========== -->
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <style>
+        /* Custom Font for a premium app feel */
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&display=swap');
+
+        body {
+            font-family: 'Plus+Jakarta+Sans', sans-serif;
+            background-color: #f8fafc;
+            /* Light slate background to make cards pop */
+        }
+
+        /* Custom spinner animation for the 'Fetching' state */
+        .loader {
+            border-top-color: #4f46e5;
+            animation: spinner 0.6s linear infinite;
+        }
+
+        @keyframes spinner {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Smooth slide-up animation for the ticket result */
+        .animate-slide-up {
+            animation: slideUp 0.5s ease-out forwards;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+
+
+<body class="pb-5">
+    <!-- 
+    <nav class="bg-[#1e1b4b] text-white p-4 flex items-center justify-between shadow-md mb-8">
+        <div class="flex items-center gap-2">
+            <i class="fa-solid fa-train-subway text-2xl text-orange-400"></i>
+            <span class="text-xl font-bold tracking-tight">TN <span class="text-orange-400">Rail</span></span>
+        </div>
+        <div class="hidden md:flex items-center gap-8 text-sm font-medium opacity-90">
+            <a href="#" class="hover:text-orange-400 transition-colors">Home</a>
+            <a href="#" class="hover:text-orange-400 transition-colors">Search</a>
+            <a href="#" class="hover:text-orange-400 transition-colors">Bookings</a>
+            <button class="bg-white/10 px-4 py-2 rounded-lg flex items-center gap-2 hover:bg-white/20">
+                <i class="fa-solid fa-clipboard-check"></i> PNR Status
+            </button>
+            <i class="fa-solid fa-moon cursor-pointer hover:text-orange-400"></i>
+        </div>
+    </nav> -->
+
+    <!-- NAVBAR (white + orange) -->
+    <nav
+        class="bg-white/95 backdrop-blur-sm border-b border-orange-200 sticky top-0 z-30 shadow-sm dark:bg-slate-800/90 dark:border-orange-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex justify-between items-center">
+            <!-- logo BookTrain (orange) -->
+            <a href="index.html" class="flex items-center gap-2 group" id="logo-link">
+                <span class="text-3xl transform group-hover:scale-110 transition duration-300">🚆</span>
+                <span class="text-4xl font-bold text-slate-800 dark:text-white tracking-tight ">Book<span
+                        class="text-orange-600 dark:text-orange-400">Train</span></span>
+            </a>
+
+            <!-- main nav -->
+            <ul class="hidden md:flex gap-6 text-slate-600 dark:text-slate-300 font-medium">
+                <li><a href="index.html" class="nav-link pb-1 px-0.5">Home</a></li>
+                <li><a href="results.html" class="nav-link pb-1 px-0.5">Search</a></li>
+                <li><a href="booking.html" class="nav-link pb-1 px-0.5">Booking</a></li>
+                <li><a href="ticket.html" class="nav-link pb-1 px-0.5">e-Ticket</a></li>
+                <li><a href="pnr.html" class="nav-link pb-1 px-0.5">PNR</a></li>
+                <li><a href="history.html" class="nav-link pb-1 px-0.5">History</a></li>
+            </ul>
+
+            <!-- dark toggle -->
+            <button id="darkToggle"
+                class="text-orange-600 bg-orange-50 p-2 rounded-full hover:bg-orange-100 text-sm dark:bg-orange-900 dark:text-orange-200"><i
+                    class="fas fa-moon"></i></button>
+        </div>
+        <!-- mobile menu -->
+        <div class="md:hidden flex justify-center gap-4 text-sm pb-2 text-slate-600 dark:text-slate-300">
+            <a href="index.html" class="hover:text-orange-600">Home</a><a href="results.html"
+                class="hover:text-orange-600">Search</a><a href="pnr.html" class="hover:text-orange-600">PNR</a><a
+                href="booking.html" class="hover:text-orange-600">Book</a><a href="ticket.html"
+                class="hover:text-orange-600">Ticket</a><a href="history.html" class="hover:text-orange-600">History</a>
+        </div>
+    </nav>
+
+
+    <div id="alertBox" class="max-w-md mx-auto mb-4 hidden">
+        <div class="bg-amber-500 text-white p-2 rounded-xl flex items-center gap-2 shadow-lg">
+            <i class="fa-solid fa-triangle-exclamation text-xl"></i>
+            <p class="text-sm font-medium">Please enter a valid PNR number (e.g. TN48271635)</p>
+        </div>
+    </div>
+
+    <div id="successBox" class="max-w-md mx-auto mb-4 hidden">
+        <div class="bg-orange-600 text-white p-3 rounded-xl flex items-center gap-3 shadow-lg text-sm">
+            <i class="fa-solid fa-circle-info"></i>
+            <p>PNR <span id="loadedPnr" class="font-bold"></span> loaded — click Check!</p>
+        </div>
+    </div>
+
+    <div class="max-w-2xl mx-auto px-6">
+        <header class="text-center mb-5">
+            <h1 class="text-3xl font-extrabold text-slate-900 mb-4">PNR Status</h1>
+            <p class="text-slate-500 italic">பயண நிலையை சரிபாருங்கள் — Check your booking status instantly</p>
+        </header>
+
+        <div class="bg-white rounded-[3rem] p-10 shadow-sm border border-slate-100 mb-8">
+            <label class="block text-slate-700 font-bold mb-4 ml-2">Enter PNR Number</label>
+            <div class="flex flex-col md:flex-row gap-4">
+                <div class="relative flex-grow">
+                    <span class="absolute left-5 top-1/2 -translate-y-1/2 text-slate-400 font-bold">TN</span>
+                    <input id="pnrInput" type="text" placeholder="4 8 2 7 1 6 3 5"
+                        class="w-full pl-14 pr-6 py-5 rounded-[1.5rem] border-2 border-slate-100 focus:border-orange-500 focus:ring-4 focus:ring-orange-50 focus:outline-none text-2xl font-mono tracking-[0.2em] text-slate-800 transition-all">
+                </div>
+                <button onclick="handleCheck()"
+                    class="bg-orange-600 hover:bg-orange-700 text-white px-5 py-3 rounded-[1.5rem] font-bold flex items-center justify-center gap-3 transition-all shadow-lg active:scale-95">
+                    <i class="fa-solid fa-magnifying-glass"></i> Check
+                </button>
+            </div>
+
+            <div class="mt-8 flex items-center gap-4 text-sm">
+                <span class="text-slate-400 font-medium">Try demo:</span>
+                <button onclick="fillDemo('TN48271635')"
+                    class="bg-orange-50 text-orange-600 px-5 py-2 rounded-full font-bold hover:bg-orange-100 transition-colors">TN48271635</button>
+                <button onclick="fillDemo('TN93741822')"
+                    class="bg-orange-50 text-orange-600 px-5 py-2 rounded-full font-bold hover:bg-orange-100 transition-colors">TN93741822</button>
+            </div>
+        </div>
+
+        <div id="loadingState" class="hidden flex items-center justify-center gap-3 py-10 text-slate-500 font-bold">
+            <div class="loader w-6 h-6 border-4 border-slate-200 rounded-full"></div>
+            Fetching PNR Status...
+        </div>
+
+        <div id="statusResult" class="hidden animate-slide-up">
+            <div class="bg-white rounded-[2.5rem] overflow-hidden shadow-2xl border border-slate-100">
+                <div class="bg-emerald-500 p-8 text-white flex justify-between items-center">
+                    <div>
+                        <p class="text-xs font-bold uppercase tracking-widest opacity-80 mb-1">PNR Status</p>
+                        <h2 class="text-4xl font-black tracking-wider">TN48271635</h2>
+                    </div>
+                    <div
+                        class="bg-white/20 px-6 py-2 rounded-full text-sm font-black backdrop-blur-md border border-white/30">
+                        <i class="fa-solid fa-check mr-1"></i> CONFIRMED
+                    </div>
+                </div>
+
+                <div class="p-8">
+                    <div class="flex items-center gap-5 mb-10">
+                        <div
+                            class="w-14 h-14 bg-slate-50 rounded-2xl flex items-center justify-center text-orange-600 border border-slate-100">
+                            <i class="fa-solid fa-train text-2xl"></i>
+                        </div>
+                        <div class="flex-grow">
+                            <h3 class="text-xl font-black text-slate-800">Vaigai SF Express</h3>
+                            <p class="text-slate-400 font-bold text-sm">#12635</p>
+                        </div>
+                        <div class="text-right">
+                            <p class="text-2xl font-black text-orange-600">₹919</p>
+                            <p class="text-xs font-bold text-slate-400 uppercase tracking-widest">Sleeper (SL)</p>
+                        </div>
+                    </div>
+
+                    <div class="relative flex justify-between items-center mb-12 px-4">
+                        <div class="text-left">
+                            <p class="text-3xl font-black text-slate-900">12:10</p>
+                            <p class="text-sm font-bold text-slate-400">Chennai</p>
+                        </div>
+                        <div class="flex-grow mx-8 relative">
+                            <div class="h-[3px] bg-slate-100 w-full rounded-full"></div>
+                            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white px-3">
+                                <i class="fa-solid fa-train-subway text-orange-300"></i>
+                            </div>
+                            <p
+                                class="absolute -top-7 left-1/2 -translate-x-1/2 text-[10px] font-black text-slate-300 uppercase tracking-widest">
+                                7h 55m</p>
+                            <p
+                                class="absolute -bottom-8 left-1/2 -translate-x-1/2 text-sm font-bold text-orange-600 bg-orange-50 px-3 py-1 rounded-full whitespace-nowrap">
+                                20 Aug 2025</p>
+                        </div>
+                        <div class="text-right">
+                            <p class="text-3xl font-black text-slate-900">20:05</p>
+                            <p class="text-sm font-bold text-slate-400">Madurai</p>
+                        </div>
+                    </div>
+
+                    <div class="space-y-4 pt-6 border-t border-slate-100">
+                        <div
+                            class="grid grid-cols-4 text-[10px] font-black text-slate-300 uppercase tracking-widest px-4 mb-2">
+                            <span>Passenger</span>
+                            <span class="text-center">Age/Sex</span>
+                            <span class="text-center">Status</span>
+                            <span class="text-right">Seat</span>
+                        </div>
+                        <div class="grid grid-cols-4 items-center bg-slate-50 p-4 rounded-2xl">
+                            <span class="font-bold text-slate-800">Arjun Kumar</span>
+                            <span class="text-center font-bold text-slate-500">28 / M</span>
+                            <span class="text-center"><span
+                                    class="bg-emerald-100 text-emerald-700 px-3 py-1 rounded-lg text-[10px] font-black">CNF</span></span>
+                            <span class="text-right font-black text-orange-600">S1 / 12</span>
+                        </div>
+                        <div class="grid grid-cols-4 items-center bg-slate-50 p-4 rounded-2xl">
+                            <span class="font-bold text-slate-800">Priya Devi</span>
+                            <span class="text-center font-bold text-slate-500">25 / F</span>
+                            <span class="text-center"><span
+                                    class="bg-emerald-100 text-emerald-700 px-3 py-1 rounded-lg text-[10px] font-black">CNF</span></span>
+                            <span class="text-right font-black text-orange-600">S1 / 13</span>
+                        </div>
+                    </div>
+
+                    <button onclick="goToTicket()"
+                        class="w-full mt-10 bg-orange-600 text-white py-5 rounded-2xl font-black shadow-xl shadow-orange-100 hover:bg-orange-700 hover:-translate-y-1 transition-all">
+                        View Full E-Ticket
+                    </button>
+
+                </div>
+            </div>
+        </div>
+
+        <div id="recentBookings" class="mt-8 bg-white rounded-[2.5rem] p-8 shadow-sm border border-slate-50">
+            <h3 class="font-black text-slate-800 mb-8 flex items-center gap-3">
+                <i class="fa-solid fa-history text-slate-300"></i> Recent Bookings
+            </h3>
+            <div class="space-y-4">
+                <div
+                    class="flex items-center gap-5 p-4 hover:bg-slate-50 rounded-[1.5rem] transition-all cursor-pointer group border border-transparent hover:border-slate-100">
+                    <div
+                        class="w-14 h-14 bg-slate-100 rounded-xl flex items-center justify-center text-orange-500 group-hover:bg-white transition-colors border border-slate-50">
+                        <i class="fa-solid fa-train"></i>
+                    </div>
+                    <div class="flex-grow">
+                        <div class="flex justify-between items-center mb-1">
+                            <h4 class="font-black text-slate-800">Vaigai SF Express</h4>
+                            <span
+                                class="text-xs font-black text-orange-600 bg-orange-50 px-3 py-1 rounded-lg">TN48271635</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <p class="text-sm font-bold text-slate-400">Chennai → Madurai • 20 Aug 2025</p>
+                            <span
+                                class="text-[10px] font-black text-emerald-500 uppercase tracking-tighter">Confirmed</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer
+        class="mt-24 bg-orange-50 dark:bg-slate-900 text-slate-700 dark:text-slate-300 py-12 border-t border-orange-200 dark:border-orange-800">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+            <div>
+                <h6 class="text-orange-600 dark:text-orange-400 text-lg font-semibold mb-4 flex items-center gap-2">
+                    <span class="text-3xl">🚆</span> <span
+                        class="text-4xl font-bold text-slate-800 dark:text-white tracking-tight ">Book<span
+                            class="text-orange-600 dark:text-orange-400">Train</span></span>
+                </h6>
+                <p class="text-sm leading-relaxed">Tamil Nadu's own train & metro booking.</p>
+            </div>
+            <div>
+                <h6 class="font-semibold mb-4 text-slate-800 dark:text-white">Quick links</h6>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="index.html" class="hover:text-orange-600">Home</a></li>
+                    <li><a href="results.html" class="hover:text-orange-600">Search</a></li>
+                    <li><a href="booking.html" class="nav-link pb-1 px-0.5">Booking</a></li>
+                    <li><a href="ticket.html" class="nav-link pb-1 px-0.5">e-Ticket</a></li>
+                    <li><a href="pnr.html" class="hover:text-orange-600">PNR</a></li>
+                    <li><a href="history.html" class="hover:text-orange-600">History</a></li>
+                </ul>
+            </div>
+            <div>
+                <h6 class="font-semibold mb-4 text-slate-800 dark:text-white">TN Special</h6>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="#" class="hover:text-orange-600">Chennai Metro</a></li>
+                    <li><a href="#" class="hover:text-orange-600">Nilgiri Mountain</a></li>
+                </ul>
+            </div>
+            <div>
+                <h6 class="font-semibold mb-4 text-slate-800 dark:text-white">Contact</h6>
+                <p class="text-sm">📧 hello@BookTrain.tn<br>📞 044-2345-6789</p>
+            </div>
+        </div>
+        <div
+            class="max-w-7xl mx-auto px-6 mt-10 pt-6 border-t border-orange-200 dark:border-orange-800 text-center text-sm text-slate-500">
+            © 2026 BookTrain – Tamil Nadu's favourite railway platform</div>
+    </footer>
+
+    <script>
+        // Store element references to keep code clean
+        const pnrInput = document.getElementById('pnrInput');
+        const alertBox = document.getElementById('alertBox');
+        const successBox = document.getElementById('successBox');
+        const loadingState = document.getElementById('loadingState');
+        const statusResult = document.getElementById('statusResult');
+        const recentBookings = document.getElementById('recentBookings');
+
+        /**
+         * Fills the input with demo data and shows a success notification.
+         */
+        function fillDemo(num) {
+            // Remove 'TN' if present to simulate clean typing
+            pnrInput.value = num.replace('TN', '');
+
+            // Show the top success notification
+            successBox.classList.remove('hidden');
+            document.getElementById('loadedPnr').innerText = 'TN' + pnrInput.value;
+            alertBox.classList.add('hidden');
+
+            // Auto-hide the success message after 3 seconds
+            setTimeout(() => successBox.classList.add('hidden'), 3000);
+        }
+
+        /**
+         * Handles the main 'Check' logic:
+         * 1. Validates input
+         * 2. Shows loading state
+         * 3. Reveals results
+         */
+        function handleCheck() {
+            const val = pnrInput.value.trim();
+
+            // Initial UI reset
+            alertBox.classList.add('hidden');
+            statusResult.classList.add('hidden');
+
+            // Validation: If empty, show the orange error box
+            if (val === "") {
+                alertBox.classList.remove('hidden');
+                // Scroll to top so user sees the alert
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+                return;
+            }
+
+            // Show 'Fetching' spinner and hide the recent list
+            loadingState.classList.remove('hidden');
+            recentBookings.classList.add('hidden');
+
+            // Simulate a network delay (1.5 seconds)
+            setTimeout(() => {
+                loadingState.classList.add('hidden');
+                statusResult.classList.remove('hidden');
+
+                // Smoothly focus the user's attention on the result
+                statusResult.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }, 1500);
+        }
+        function goToTicket() {
+            // You could save the PNR to localStorage here if needed
+            const pnr = document.getElementById('pnrInput').value;
+            localStorage.setItem('currentPNR', pnr);
+
+            // Then redirect to the new page
+            window.location.href = "ticket.html";
+        }
+    </script>
+</body>
+
+</html>
