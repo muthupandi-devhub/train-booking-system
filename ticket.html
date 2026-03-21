@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BookTrain · e-Ticket</title>
+ 
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🚆</text></svg>">
+ 
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+ 
+<body class="font-[Poppins]" id="body_2">
+ 
+<!-- NAVBAR -->
+<nav class="backdrop-blur-sm border-b border-orange-200 sticky top-0 z-30 shadow-sm dark:bg-slate-800/90 dark:border-orange-800">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex justify-between items-center">
+    <!-- logo -->
+    <a href="index.html" class="flex items-center gap-2 group" id="logo-link">
+      <span class="text-3xl transform group-hover:scale-110 transition duration-300">🚆</span>
+      <span class="text-4xl font-bold text-slate-800 dark:text-white tracking-tight">Book<span class="text-orange-600 dark:text-orange-400">Train</span></span>
+    </a>
+ 
+    <!-- main nav -->
+    <ul class="hidden md:flex gap-6 text-slate-600 dark:text-slate-300 font-medium">
+      <li><a href="index.html" class="nav-link pb-1 px-0.5">Home</a></li>
+      <li><a href="results.html" class="nav-link pb-1 px-0.5">Search</a></li>
+      <li><a href="booking.html" class="nav-link pb-1 px-0.5">Booking</a></li>
+      <li><a href="ticket.html" class="nav-link pb-1 px-0.5">e-Ticket</a></li>
+      <li><a href="pnr.html" class="nav-link pb-1 px-0.5">PNR</a></li>
+      <li><a href="history.html" class="nav-link pb-1 px-0.5">History</a></li>
+    </ul>
+ 
+    <!-- dark toggle -->
+    <button id="darkToggle1" class="text-orange-600 bg-orange-50 p-2 rounded-full hover:bg-orange-100 text-sm dark:bg-orange-900 dark:text-orange-200">
+      <i class="fas fa-moon"></i>
+    </button>
+  </div>
+  <!-- mobile menu -->
+  <div class="md:hidden flex justify-center gap-4 text-sm pb-2 text-slate-600 dark:text-slate-300">
+    <a href="index.html" class="hover:text-orange-600">Home</a>
+    <a href="results.html" class="hover:text-orange-600">Search</a>
+    <a href="pnr.html" class="hover:text-orange-600">PNR</a>
+    <a href="booking.html" class="hover:text-orange-600">Book</a>
+    <a href="ticket.html" class="hover:text-orange-600">Ticket</a>
+    <a href="history.html" class="hover:text-orange-600">History</a>
+  </div>
+</nav>
+ 
+<!-- MAIN CONTAINER -->
+<div class="max-w-5xl mx-auto p-6 space-y-8">
+ 
+  <!-- HEADER -->
+  <div class="bg-white p-6 rounded-lg shadow-lg">
+    <div class="flex justify-between items-center max-w-3xl mx-auto">
+      <h3 class="font-bold sm:text-xl">Your e-Ticket</h3>
+      <p class="px-3 py-1 rounded-full bg-green-400 animate-bounce font-semibold text-sm text-xs">
+        ✅ Booking Confirmed
+      </p>
+    </div>
+  </div>
+ 
+  <!-- TICKET CARD -->
+  <div class="bg-white p-6 rounded-lg shadow-lg" id="ticket_card">
+    <div class="border border-blue-400 rounded-2xl p-4 max-w-3xl mx-auto space-y-4">
+ 
+      <!-- Train Info -->
+      <div class="flex justify-between items-center">
+        <p class="font-bold sm:text-sm text-xs">🚆 Train Name</p>
+        <p class="text-xs text-gray-500">PNR: <span class="font-bold text-black" id="pnr_display">TBD</span></p>
+      </div>
+ 
+      <hr class="border-dashed border-blue-300">
+ 
+      <!-- Route -->
+      <div class="flex justify-between items-center">
+        <div class="text-center">
+          <p class="font-bold text-lg sm:text-base text-sm">From</p>
+          <p class="text-xs text-gray-500">Dep: 08:00 AM</p>
+        </div>
+        <div class="text-center text-orange-500 font-bold text-xl">→</div>
+        <div class="text-center">
+          <p class="font-bold text-lg sm:text-base text-sm">To</p>
+          <p class="text-xs text-gray-500">Arr: 02:00 PM</p>
+        </div>
+      </div>
+ 
+      <hr class="border-dashed border-blue-300">
+ 
+      <!-- Journey Details Grid -->
+      <div class="grid grid-cols-2 gap-3 sm:text-sm text-xs">
+        <div>
+          <p class="text-gray-500">Date</p>
+          <p class="font-semibold">21 Mar 2026</p>
+        </div>
+        <div>
+          <p class="text-gray-500">Class</p>
+          <p class="font-semibold">Sleeper</p>
+        </div>
+        <div>
+          <p class="text-gray-500">Seat(s)</p>
+          <p class="font-semibold">S4 / 12, 13</p>
+        </div>
+        <div>
+          <p class="text-gray-500">Status</p>
+          <p class="font-semibold text-green-600">CONFIRMED</p>
+        </div>
+      </div>
+ 
+      <hr class="border-dashed border-blue-300">
+ 
+      <!-- Passenger Table -->
+      <div>
+        <p class="font-bold sm:text-sm text-xs mb-2">Passenger Details</p>
+        <table class="w-full sm:text-sm text-xs text-left border-collapse">
+          <thead>
+            <tr class="bg-blue-50">
+              <th class="py-1 px-2 border border-blue-200">#</th>
+              <th class="py-1 px-2 border border-blue-200">Name</th>
+              <th class="py-1 px-2 border border-blue-200">Age</th>
+              <th class="py-1 px-2 border border-blue-200">Gender</th>
+              <th class="py-1 px-2 border border-blue-200">Seat</th>
+            </tr>
+          </thead>
+          <tbody id="passenger_table_body">
+            <!-- Filled by JS -->
+            <tr>
+              <td class="py-1 px-2 border border-blue-100">1</td>
+              <td class="py-1 px-2 border border-blue-100">Passenger 1</td>
+              <td class="py-1 px-2 border border-blue-100">--</td>
+              <td class="py-1 px-2 border border-blue-100">--</td>
+              <td class="py-1 px-2 border border-blue-100">S4/12</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+ 
+      <hr class="border-dashed border-blue-300">
+ 
+      <!-- Total -->
+      <div class="flex justify-between items-center">
+        <p class="sm:text-sm text-xs text-gray-500">Total Paid <span class="text-xs">(incl. GST)</span></p>
+        <p class="text-2xl font-bold text-green-600">₹ 330</p>
+      </div>
+ 
+    </div>
+  </div>
+ 
+  <!-- IMPORTANT NOTES -->
+  <div class="bg-white p-6 rounded-lg shadow-lg">
+    <div class="border border-blue-400 rounded-2xl p-4 max-w-3xl mx-auto space-y-2">
+      <p class="font-bold sm:text-sm text-xs text-red-500">⚠️ Important Notes</p>
+      <ul class="list-disc pl-5 sm:text-sm text-xs text-gray-600 space-y-1">
+        <li>Carry a valid government photo ID for travel</li>
+        <li>Name on ticket must match the ID proof</li>
+        <li>Booking is non-refundable after payment</li>
+        <li>Report at station 30 minutes before departure</li>
+      </ul>
+    </div>
+  </div>
+ 
+  <!-- ACTION BUTTONS -->
+  <div class="bg-white p-6 rounded-lg shadow-lg">
+    <div class="flex flex-col gap-3 max-w-md mx-auto">
+      <button class="bg-blue-500 text-white py-2 rounded hover:bg-blue-600 transition sm:text-sm text-xs" id="download_but">
+        📥 Download Ticket (PDF)
+      </button>
+      <button class="bg-green-500 text-white py-2 rounded hover:bg-green-600 transition sm:text-sm text-xs" id="share_but">
+        📤 Share Ticket
+      </button>
+      <button class="bg-orange-500 text-white py-2 rounded hover:bg-orange-600 transition sm:text-sm text-xs" onclick="window.location.href='index.html'">
+        🏠 Back to Home
+      </button>
+    </div>
+  </div>
+ 
+</div>
+<style>
+     body {
+    margin: 0;
+    min-height: 100vh;
+    background-image: url('image-b/s2.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+  }
+</style>
+  <style media="print">
+  nav, .space-y-8 > div:last-of-type, .space-y-8 > div:nth-last-of-type(2) {
+    display: none !important;
+  }
+  body {
+    background: white !important;
+    background-image: none !important;
+  }
+  #ticket_card {
+    box-shadow: none !important;
+    border: 1px solid #ccc !important;
+  }
+</style>
+ 
+</body>
+</html>
